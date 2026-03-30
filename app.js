@@ -15,6 +15,7 @@ const mensagemVitoria = document.getElementById("vitoria");
 const emojis = ["🥱", "😴", "🤩", "😛"];
 const pares = [...emojis, ...emojis];
 
+
 function embaralhar() {
     pares.sort(() => Math.random() - 0.5);
 
