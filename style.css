@@ -201,7 +201,7 @@ p {
 @keyframes cair {
   to {
     bottom: 100px;
-    transform: translateY(100vh) rotate(720deg);
+    transform: translateY(80vh) rotate(720deg);
     opacity: 0;
   }
 }
