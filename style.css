@@ -192,7 +192,7 @@ p {
   position: absolute;
   width: 10px;
   height: 10px;
-  top: -5;
+  top: 0;
   border-radius: 2px;
   animation: cair 3s linear forwards;
   z-index: 1000;
@@ -201,7 +201,7 @@ p {
 @keyframes cair {
   to {
     bottom: 100px;
-    transform: translateY(80vh) rotate(720deg);
+    transform: translateY(100vh) rotate(720deg);
     opacity: 0;
   }
 }
