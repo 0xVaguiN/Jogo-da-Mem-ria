@@ -1,17 +1,29 @@
 const cartas = document.querySelectorAll(".carta");
+let cartasViradas = [];
+
 let tentativas = 0;
 const contador = document.getElementById("contador");
-let cartasViradas = [];
+
+let acertos = 0;
+const contadorAcertos = document.getElementById("contadorAcertos");
+
+const botaoReinicia = document.getElementById("reiniciar");
+
+const botaoReiniciaVitoria = document.getElementById("reiniciar-vitoria");
+const mensagemVitoria = document.getElementById("vitoria");
 
 const emojis = ["🥱", "😴", "🤩", "😛"];
 const pares = [...emojis, ...emojis];
 
-pares.sort(() => Math.random() - 0.5);
+function embaralhar() {
+    pares.sort(() => Math.random() - 0.5);
 
-cartas.forEach((carta, index) => {
-    carta.querySelector(".carta-costas").textContent = pares[index];
-});
+    cartas.forEach((carta, index) => {
+        carta.querySelector(".carta-costas").textContent = pares[index];
+    });
+}
 
+embaralhar();
 
 
 function animarEmbaralhar() {
@@ -49,7 +61,7 @@ function virarCarta() {
     })
 }
 
-
+virarCarta();
 
 function verificarCartas() {
     bloqueado = true;
@@ -61,6 +73,14 @@ function verificarCartas() {
     if(emoji1 === emoji2) {
         cartasViradas = [];
         bloqueado = false;
+
+        acertos++;
+        contadorAcertos.textContent = acertos;
+
+        if (document.querySelectorAll(".virada").length === cartas.length) {
+            mostrarVitoria();
+            soltarConfete();
+        }
     } else {
         setTimeout(() => {
             carta1.classList.remove("virada");
@@ -72,4 +92,38 @@ function verificarCartas() {
     }
 }
 
-virarCarta();
+function mostrarVitoria() {
+    mensagemVitoria.classList.add("ativo")
+}
+
+botaoReinicia.addEventListener("click", () => {
+    location.reload();
+})
+
+botaoReiniciaVitoria.addEventListener("click", () => {
+    location.reload();
+})
+
+function soltarConfete() {
+    for (let i = 0; i < 300; i++) {
+        const confete = document.createElement("div");
+        confete.classList.add("confete");
+
+        confete.style.left = Math.random() * 100 + "vw";
+
+        confete.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+
+        const tamanho = Math.random() * 8 + 5;
+        confete.style.width = tamanho + "px";
+        confete.style.height = tamanho + "px";
+
+        confete.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+        document.body.appendChild(confete);
+
+        setTimeout(() => {
+            confete.remove();
+        }, 3000);
+    }
+}
+

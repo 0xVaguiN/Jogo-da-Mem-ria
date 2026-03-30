@@ -14,7 +14,6 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 80vh;
-    margin: 20px;
     gap: 40px;
     grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(2, auto);
@@ -51,6 +50,7 @@ body {
   align-items: center;
   font-size: 2rem;
   backface-visibility: hidden;
+  z-index: 1;
 }
 
 .carta-frente {
@@ -66,18 +66,87 @@ body {
   transform: rotateY(180deg);
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tentativas-acertos {
+  margin: 4px 10px 0;
+  padding: 8px;
+  background-color: #375d6e;
+  border: 4px solid white;
+  border-radius: 0.7rem;
+}
+
 p {
   font-family: 'Courier New', Courier, monospace;
   margin: 0 10px 0px;
   padding: 0;
   color: #ffffff;
-  font-size: xx-large;
+  font-size: x-large;
   min-width: 80px;
   display: fixed;
   font-weight: 700;
   font-style: normal;
   text-align: left;
 }
+
+#reiniciar,
+#reiniciar-vitoria {
+  margin: 4px 10px 0;
+  padding: 8px;
+  border-radius: 0.7rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: large;
+  color: white;
+  border: 4px solid white;
+  background: #375d6e;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(0.9);
+  }
+}
+
+#reiniciar-vitoria {
+  background-color: #8a8a8a;
+}
+
+#vitoria {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 2;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#vitoria.ativo {
+  display: flex;
+}
+
+.vitoria-box {
+  background: #3d903f;
+  border: 0.5rem solid white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.vitoria-box h1 {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 20px;
+}
+
 
 @keyframes embaralhar {
   0%   { transform: translate(0, 0) rotate(0deg); }
@@ -93,6 +162,7 @@ p {
 
 @media screen and (max-width: 728px) {
   .tabuleiro {
+    margin-top: 20px;
     gap: 20px;
     grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(4, auto);
@@ -109,6 +179,29 @@ p {
 
 .carta-costas {
   border: 0.5rem solid white;
+  font-size: 60px;
 }
 
+p {
+  font-size: large;
+}
+
+}
+
+.confete {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  border-radius: 2px;
+  animation: cair 3s linear forwards;
+  z-index: 1000;
+}
+
+@keyframes cair {
+  to {
+    bottom: 100px;
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
 }
