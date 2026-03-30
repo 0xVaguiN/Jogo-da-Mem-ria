@@ -13,7 +13,8 @@ body {
     display: grid;
     justify-content: center;
     align-content: center;
-    min-height: 100vh;
+    min-height: 80vh;
+    margin: 20px;
     gap: 40px;
     grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(2, auto);
@@ -65,17 +66,17 @@ body {
   transform: rotateY(180deg);
 }
 
-#tentativas {
-  font-family: "Cherry Bomb One", system-ui;
-  margin: 10px;
+p {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0 10px 0px;
+  padding: 0;
   color: #ffffff;
   font-size: xx-large;
   min-width: 80px;
-  display: inline-block;
-  text-align: center;
-  font-weight: 400;
+  display: fixed;
+  font-weight: 700;
   font-style: normal;
-  position: absolute;
+  text-align: left;
 }
 
 @keyframes embaralhar {

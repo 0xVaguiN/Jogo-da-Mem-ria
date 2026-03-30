@@ -1,6 +1,6 @@
 const cartas = document.querySelectorAll(".carta");
-const tentativas = document.getElementById("tentativas");
-let contadorTentivas = 0;
+let tentativas = 0;
+const contador = document.getElementById("contador");
 let cartasViradas = [];
 
 const emojis = ["🥱", "😴", "🤩", "😛"];
@@ -40,8 +40,9 @@ function virarCarta() {
             }
 
             if(cartasViradas.length === 2) {
-                contadorTentivas++;
-                tentativas.innerHTML = `<p id="tentativas">Tentativas: ${contadorTentivas}</p>`
+                tentativas++;
+                contador.textContent = tentativas;
+
                 verificarCartas();
             }
         });
